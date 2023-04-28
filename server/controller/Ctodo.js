@@ -41,7 +41,7 @@ exports.updateTodo = async (req, res) => {
         where: {
           id: { [Op.eq]: req.params.todoId },
         },
-      },
+      }
     );
     // console.log(idUpdated); // 0 or 1
 
@@ -56,6 +56,7 @@ exports.updateTodo = async (req, res) => {
   }
 };
 
+// DLETE /api/todos/:todoId - remove
 exports.deleteTodo = async (req, res) => {
   try {
     let isDeleted = await Todo.destroy({
