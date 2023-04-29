@@ -3,7 +3,7 @@ import '../styles/Todo.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareMinus } from '@fortawesome/free-solid-svg-icons';
 
-const Todo = ({ item, deleteItem }) => {
+const Todo = ({ item, deleteItem, updateItem }) => {
   console.log(item); // {done: false, id: 1, title: "저녁먹기"}
   const [todoItem, setTodoItem] = useState(item);
   const [readOnly, setReadOnly] = useState(true);
@@ -21,6 +21,7 @@ const Todo = ({ item, deleteItem }) => {
   const enterKeyEventHandler = (e) => {
     if (e.key === 'Enter') {
       setReadOnly(true);
+      updateItem(todoItem); // 수정 1: text input 에서 enter 누르면 수정 완료
     }
   };
   console.log(todoItem.length);
@@ -38,11 +39,12 @@ const Todo = ({ item, deleteItem }) => {
   const checkboxEventHandler = (e) => {
     // todoItem.done = !todoItem.done; // 이 경우 state를 직접 변경하고 있음 -> setter 함수 이용해야
     const { done, ...rest } = todoItem;
-
-    setTodoItem({
+    const updatedItem = {
       done: !done,
       ...rest,
-    });
+    };
+    setTodoItem(updatedItem);
+    updateItem(updatedItem);
   };
 
   return (

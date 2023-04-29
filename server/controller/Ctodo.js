@@ -13,9 +13,10 @@ exports.readTodos = async (_, res) => {
 
 // POST /api/todo - create a new todo (CREATE)
 exports.createTodo = async (req, res) => {
-  console.log('>>>>', req.body);
+  console.log('>>>>', req.body); //
   try {
     let newTodo = await Todo.create({
+      // model에 추가한다.
       title: req.body.title,
       done: false, // todoItem 추가시 false가 기본 값
     });
