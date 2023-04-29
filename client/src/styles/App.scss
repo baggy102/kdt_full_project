@@ -1,0 +1,43 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(34, 139, 34, 0.461);
+  overflow: hidden;
+
+  h2 {
+    background-color: white;
+  }
+
+  .list {
+    background-color: white;
+
+    height: 100vh;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.AddTodo {
+  margin-bottom: 20px;
+
+  input {
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid gray;
+    width: 48vw;
+  }
+}
+
+.Todo {
+  margin-bottom: 10px;
+
+  input[type='text'] {
+    border: none;
+    width: 48vw;
+  }
+}

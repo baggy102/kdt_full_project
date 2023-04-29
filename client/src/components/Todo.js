@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import '../styles/Todo.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquareMinus } from '@fortawesome/free-solid-svg-icons';
 
 const Todo = ({ item, deleteItem }) => {
   console.log(item); // {done: false, id: 1, title: "저녁먹기"}
@@ -20,6 +23,7 @@ const Todo = ({ item, deleteItem }) => {
       setReadOnly(true);
     }
   };
+  console.log(todoItem.length);
 
   // 사용자가 키보드 입력할 때마다 item의 title을 입력한 값으로 변경
   const editEventHandler = (e) => {
@@ -45,7 +49,9 @@ const Todo = ({ item, deleteItem }) => {
     <div className="Todo">
       <input type="checkbox" id={`todo${item.id}`} name={`todo${item.id}`} value={`todo${item.id}`} defaultChecked={item.done} onChange={checkboxEventHandler} />
       <input type="text" value={todoItem.title} onClick={offReadOnlyMode} onKeyDown={enterKeyEventHandler} onChange={editEventHandler} />
-      <button onClick={onDeleteButtonClick}>DELETE</button>
+      <button onClick={onDeleteButtonClick}>
+        <FontAwesomeIcon icon={faSquareMinus} />
+      </button>
     </div>
   );
 };
