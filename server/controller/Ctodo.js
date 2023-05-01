@@ -4,7 +4,12 @@ const { Op } = require('sequelize');
 // GET /api/todos - show all todos (READ)
 exports.readTodos = async (_, res) => {
   try {
-    let todos = await Todo.findAll();
+    // select * from todos;
+    let todos = await Todo.findAll({
+      order: [['id', 'DESC']],
+    });
+
+    // select * from todos drder by id desc;
     res.send(todos);
   } catch (err) {
     res.send(err);

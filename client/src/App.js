@@ -13,7 +13,7 @@ function App() {
     console.log('mount 완료');
     const getTodos = async () => {
       const res = await axios.get(`${API_BASE_URL}/api/todos`);
-      console.log(res);
+      // console.log(res);
       setTodoItems(res.data);
     };
 
